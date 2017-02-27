@@ -4,3 +4,6 @@ set(protoc_files
 
 add_executable(protoc ${protoc_files})
 target_link_libraries(protoc libprotobuf libprotoc)
+if(WIN32 AND NOT MSVC)
+  target_link_libraries(protoc -static)
+endif()
